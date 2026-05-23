@@ -8,7 +8,7 @@ const CONTACT_INFO = [
 ];
 
 // ⚠️ Reemplazá este número con el tuyo (sin +, sin espacios, con código de país)
-const WHATSAPP_NUMBER = "5491153345566";
+const WHATSAPP_NUMBER = "5491121554821";
 
 export default function Contact() {
   const [form, setForm] = useState({ nombre: "", mensaje: "" });
