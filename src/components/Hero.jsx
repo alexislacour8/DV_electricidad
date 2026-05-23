@@ -1,3 +1,12 @@
+import img1 from "../img/WhatsApp Image 2026-05-12 at 23.38.27.jpeg";
+import img2 from "../img/WhatsApp Image 2026-05-12 at 23.38.28 (2).jpeg";
+import img3 from "../img/WhatsApp Image 2026-05-12 at 23.38.30.jpeg";
+import img4 from "../img/WhatsApp Image 2026-05-12 at 23.38.31 (2).jpeg";
+import img5 from "../img/WhatsApp Image 2026-05-12 at 23.38.28 (4).jpeg";
+
+const bannerImages = [img5, img2, img3, img4, img1];
+const randomBanner = bannerImages[Math.floor(Math.random() * bannerImages.length)];
+
 const STATS = [
   { icon: "⚡", value: "15+", label: "Años de experiencia" },
   { icon: "🏭", value: "320+", label: "Proyectos completados" },
@@ -11,16 +20,30 @@ export default function Hero() {
       id="inicio"
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #0a1428 0%, #0f2045 50%, #1a1000 100%)",
+        position: "relative",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        position: "relative",
         overflow: "hidden",
         paddingTop: 70,
       }}
     >
-      {/* Background effects */}
+      {/* Imagen de fondo */}
+      <div style={{
+        position: "absolute", inset: 0,
+        backgroundImage: `url(${randomBanner})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }} />
+
+      {/* Capa oscura encima de la imagen */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "linear-gradient(135deg, rgba(10,20,40,0.92) 0%, rgba(15,32,69,0.85) 50%, rgba(26,16,0,0.90) 100%)",
+      }} />
+
+      {/* Efectos de color encima */}
       <div style={{
         position: "absolute", inset: 0,
         backgroundImage: `radial-gradient(circle at 20% 80%, rgba(240,165,0,0.08) 0%, transparent 50%),
@@ -89,8 +112,9 @@ export default function Hero() {
             { icon: "📊", title: "Automatización PLC", desc: "Programación y puesta en marcha de sistemas de control", color: "#1a7a45" },
           ].map((card) => (
             <div key={card.title} style={{
-              background: "rgba(255,255,255,0.04)",
-              border: `1px solid rgba(255,255,255,0.08)`,
+              background: "rgba(255,255,255,0.06)",
+              backdropFilter: "blur(8px)",
+              border: `1px solid rgba(255,255,255,0.1)`,
               borderLeft: `4px solid ${card.color}`,
               borderRadius: 12, padding: "1.5rem",
               marginLeft: card.offset ? 40 : 0,
@@ -105,8 +129,11 @@ export default function Hero() {
 
       {/* Stats bar */}
       <div style={{
-        background: "rgba(240,165,0,0.08)", borderTop: "1px solid rgba(240,165,0,0.2)",
+        background: "rgba(10,20,40,0.7)",
+        backdropFilter: "blur(10px)",
+        borderTop: "1px solid rgba(240,165,0,0.2)",
         padding: "1.2rem 2rem",
+        position: "relative", zIndex: 1,
       }}>
         <div style={{
           maxWidth: 1200, margin: "0 auto",
