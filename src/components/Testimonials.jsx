@@ -4,8 +4,8 @@ import logoEdenor from "../img/edenor.png";
 import logoArcor from "../img/arcor.jpg";
 import logoFravega from "../img/Fravega.png";
 import logoPami from "../img/PAMI.png";
-import logoNacion from "../img/nacion.png";
-import logoProsegur from "../img/Prosegur.jpg";
+import logoNacion from "../img/Banco.png";
+import logoProsegur from "../img/prosegur1.png";
 
 const CLIENTS = [
   { logo: logoYPF, name: "YPF" },
