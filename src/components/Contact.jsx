@@ -2,21 +2,30 @@ import { useState } from "react";
 
 const CONTACT_INFO = [
   { icon: "📍", label: "Dirección", val: "Av. Calchaquí 3700, Quilmes, Buenos Aires" },
-  { icon: "📞", label: "Teléfono", val: "011 4523-8890 / 011 15-3344-5566" },
+  { icon: "📞", label: "Teléfono", val: "011 4523-8890 / 11 2155-4821" },
   { icon: "✉️", label: "Email", val: "info@electropro.com.ar" },
   { icon: "🕐", label: "Horario", val: "Lun–Vie 8:00–18:00 | Emergencias 24/7" },
 ];
 
-export default function Contact() {
-  const [form, setForm] = useState({ nombre: "", email: "", telefono: "", empresa: "", mensaje: "" });
-  const [sent, setSent] = useState(false);
+// ⚠️ Reemplazá este número con el tuyo (sin +, sin espacios, con código de país)
+const WHATSAPP_NUMBER = "5491121554821";
 
-  const handleSubmit = () => {
-    if (!form.nombre || !form.email || !form.mensaje) {
-      alert("Por favor completá nombre, email y mensaje.");
+export default function Contact() {
+  const [form, setForm] = useState({ nombre: "", mensaje: "" });
+
+  const handleEnviar = () => {
+    if (!form.nombre || !form.mensaje) {
+      alert("Por favor completá tu nombre y la solicitud.");
       return;
     }
-    setSent(true);
+
+    const texto = `Hola! Soy *${form.nombre}* y me comunico desde la web de ElectroPro.
+
+*Solicitud:*
+${form.mensaje}`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -28,7 +37,7 @@ export default function Contact() {
             Consultanos sin cargo
           </h2>
           <p style={{ color: "#7799bb", fontSize: 16, maxWidth: 500, margin: "0 auto" }}>
-            Evaluamos tu necesidad y te enviamos un presupuesto detallado en 24hs hábiles.
+            Escribinos por WhatsApp y te respondemos a la brevedad.
           </p>
         </div>
 
@@ -53,66 +62,67 @@ export default function Contact() {
             ))}
           </div>
 
-          {/* Form */}
-          {sent ? (
-            <div style={{
-              background: "rgba(26,122,69,0.15)", border: "1px solid rgba(26,122,69,0.4)",
-              borderRadius: 12, padding: "3rem", textAlign: "center",
-            }}>
-              <div style={{ fontSize: 48, marginBottom: "1rem" }}>✅</div>
-              <h3 style={{ color: "#4cca80", fontSize: 22, fontWeight: 700 }}>¡Mensaje enviado!</h3>
-              <p style={{ color: "#99ccaa" }}>Te contactaremos en las próximas 24 horas hábiles.</p>
+          {/* Formulario WhatsApp */}
+          <div style={{
+            background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)",
+            borderRadius: 12, padding: "2rem",
+          }}>
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ color: "#f0a500", fontSize: 12, fontWeight: 600, letterSpacing: 1, display: "block", marginBottom: 6 }}>
+                TU NOMBRE
+              </label>
+              <input
+                type="text"
+                placeholder="Nombre y apellido"
+                value={form.nombre}
+                onChange={(e) => setForm({ ...form, nombre: e.target.value })}
+                style={{
+                  width: "100%", background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.15)", borderRadius: 6,
+                  padding: "12px 14px", color: "#fff", fontSize: 15,
+                  outline: "none", boxSizing: "border-box",
+                }}
+              />
             </div>
-          ) : (
-            <div style={{
-              background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 12, padding: "2rem",
-            }}>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 16 }}>
-                {[
-                  { key: "nombre", placeholder: "Nombre y apellido *" },
-                  { key: "empresa", placeholder: "Empresa / Planta" },
-                  { key: "email", placeholder: "Email *" },
-                  { key: "telefono", placeholder: "Teléfono" },
-                ].map((f) => (
-                  <input
-                    key={f.key}
-                    type="text"
-                    placeholder={f.placeholder}
-                    value={form[f.key]}
-                    onChange={(e) => setForm({ ...form, [f.key]: e.target.value })}
-                    style={{
-                      background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.15)",
-                      borderRadius: 6, padding: "12px 14px", color: "#fff", fontSize: 14,
-                      outline: "none", width: "100%", boxSizing: "border-box",
-                    }}
-                  />
-                ))}
-              </div>
+
+            <div style={{ marginBottom: 20 }}>
+              <label style={{ color: "#f0a500", fontSize: 12, fontWeight: 600, letterSpacing: 1, display: "block", marginBottom: 6 }}>
+                ¿QUÉ NECESITÁS?
+              </label>
               <textarea
-                placeholder="Describí el trabajo que necesitás *"
-                rows={4}
+                placeholder="Describí el trabajo o consulta que necesitás..."
+                rows={5}
                 value={form.mensaje}
                 onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
                 style={{
                   width: "100%", background: "rgba(255,255,255,0.06)",
                   border: "1px solid rgba(255,255,255,0.15)", borderRadius: 6,
-                  padding: "12px 14px", color: "#fff", fontSize: 14, outline: "none",
-                  resize: "vertical", boxSizing: "border-box", marginBottom: 16, fontFamily: "inherit",
+                  padding: "12px 14px", color: "#fff", fontSize: 15,
+                  outline: "none", resize: "vertical", boxSizing: "border-box",
+                  fontFamily: "inherit",
                 }}
               />
-              <button
-                onClick={handleSubmit}
-                style={{
-                  width: "100%", background: "#f0a500", color: "#0a1428",
-                  padding: "14px", borderRadius: 6, border: "none",
-                  fontWeight: 800, fontSize: 16, cursor: "pointer", letterSpacing: 0.5,
-                }}
-              >
-                Enviar Consulta
-              </button>
             </div>
-          )}
+
+            <button
+              onClick={handleEnviar}
+              style={{
+                width: "100%", background: "#25D366", color: "#fff",
+                padding: "15px", borderRadius: 6, border: "none",
+                fontWeight: 800, fontSize: 16, cursor: "pointer",
+                display: "flex", alignItems: "center", justifyContent: "center", gap: 10,
+              }}
+            >
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Enviar por WhatsApp
+            </button>
+
+            <p style={{ color: "#556677", fontSize: 12, textAlign: "center", marginTop: 12 }}>
+              Se va a abrir WhatsApp con tu mensaje listo para enviar.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -120,6 +130,7 @@ export default function Contact() {
         @media (max-width: 768px) {
           .contact-grid { grid-template-columns: 1fr !important; }
         }
+        input::placeholder, textarea::placeholder { color: #556677; }
       `}</style>
     </section>
   );
