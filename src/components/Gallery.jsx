@@ -22,9 +22,9 @@ import img18 from "../img/WhatsApp Image 2026-05-12 at 23.38.35.jpeg";
 
 // Panel principal: primeras 3 imágenes destacadas
 const panelImages = [
-  { src: img1, label: "Instalación de Tablero Principal" },
-  { src: img7, label: "Cableado Industrial MT/BT" },
-  { src: img10, label: "Planta Industrial — Obra completa" },
+  { src: img10, label: "Instalación de Tablero Principal" },
+  { src: img14, label: "Cableado Industrial MT/BT" },
+  { src: img17, label: "Planta Industrial — Obra completa" },
 ];
 
 // Grid de trabajos: resto de las imágenes
