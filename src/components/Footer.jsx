@@ -31,9 +31,9 @@ export default function Footer() {
         <div>
           <h4 style={{ color: "#fff", fontWeight: 700, marginBottom: "1rem", fontSize: 14 }}>Contacto</h4>
           <div style={{ color: "#556677", fontSize: 13, lineHeight: 1.8 }}>
-            <div>📞 011 2155-4821</div>
+            <div>📞 011 4523-8890</div>
             <div>✉️ info@electropro.com.ar</div>
-            <div>📍 Monte <Grande></Grande>, Buenos Aires</div>
+            <div>📍 Quilmes, Buenos Aires</div>
             <div style={{ marginTop: 8, color: "#f0a500", fontWeight: 600 }}>Emergencias 24/7</div>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function Footer() {
         display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 8,
       }}>
         <span style={{ color: "#334455", fontSize: 13 }}>
-          © 2026 ElectroPro Electricidad Industrial. Todos los derechos reservados.
+          © 2025 ElectroPro Electricidad Industrial. Todos los derechos reservados.
         </span>
         <span style={{ color: "#334455", fontSize: 13 }}>
           Mat. Técnica N° 12.847 — AEA — IRAM

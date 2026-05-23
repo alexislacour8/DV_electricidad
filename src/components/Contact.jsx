@@ -2,13 +2,13 @@ import { useState } from "react";
 
 const CONTACT_INFO = [
   { icon: "📍", label: "Dirección", val: "Av. Calchaquí 3700, Quilmes, Buenos Aires" },
-  { icon: "📞", label: "Teléfono", val: "011 4523-8890 / 11 2155-4821" },
+  { icon: "📞", label: "Teléfono", val: "011 4523-8890 / 011 15-3344-5566" },
   { icon: "✉️", label: "Email", val: "info@electropro.com.ar" },
   { icon: "🕐", label: "Horario", val: "Lun–Vie 8:00–18:00 | Emergencias 24/7" },
 ];
 
 // ⚠️ Reemplazá este número con el tuyo (sin +, sin espacios, con código de país)
-const WHATSAPP_NUMBER = "5491121554821";
+const WHATSAPP_NUMBER = "5491153345566";
 
 export default function Contact() {
   const [form, setForm] = useState({ nombre: "", mensaje: "" });
