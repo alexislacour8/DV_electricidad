@@ -1,74 +1,148 @@
-const TESTIMONIALS = [
-  {
-    name: "Ing. Roberto Sánchez",
-    company: "Planta Frigorífica San Martín",
-    role: "Jefe de Mantenimiento",
-    text: "Excelente trabajo en la renovación completa del sistema eléctrico de nuestra planta. Cumplieron los plazos al pie de la letra y la calidad del trabajo fue impecable.",
-    initials: "RS",
-    color: "#1a56a0",
-  },
-  {
-    name: "Marcela Torres",
-    company: "Industrias Metálicas del Sur",
-    role: "Gerente de Operaciones",
-    text: "Llevamos 5 años trabajando con ellos para el mantenimiento preventivo. Desde que los contratamos, bajamos los paros no programados a casi cero. Muy recomendables.",
-    initials: "MT",
-    color: "#c45820",
-  },
-  {
-    name: "Carlos Benedetti",
-    company: "Almacenes Frigoríficos Belgrano",
-    role: "Director",
-    text: "Realizaron la instalación de 200 luminarias LED en nuestro depósito. El ahorro en la factura de luz fue del 60%. Trabajo limpio y profesional.",
-    initials: "CB",
-    color: "#1a7a45",
-  },
+import { useState, useEffect } from "react";
+import logoYPF from "../img/YPF.png";
+import logoEdenor from "../img/edenor.png";
+import logoArcor from "../img/arcor.jpg";
+import logoFravega from "../img/Fravega.png";
+import logoPami from "../img/PAMI.png";
+import logoNacion from "../img/nacion.png";
+import logoProsegur from "../img/Prosegur.jpg";
+
+const CLIENTS = [
+  { logo: logoYPF, name: "YPF" },
+  { logo: logoEdenor, name: "Edenor" },
+  { logo: logoArcor, name: "Arcor" },
+  { logo: logoFravega, name: "Frávega" },
+  { logo: logoPami, name: "PAMI" },
+  { logo: logoNacion, name: "Banco Nación" },
+  { logo: logoProsegur, name: "Prosegur" },
 ];
 
-export default function Testimonials() {
+export default function OurClients() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Al mostrarse de a 3 tarjetas, el límite es el largo total menos 3
+  const maxIndex = CLIENTS.length - 3; 
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex < maxIndex ? prevIndex + 1 : 0));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : maxIndex));
+  };
+
+  // Efecto para el movimiento automático
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000); // Cambia cada 3000 milisegundos (3 segundos)
+
+    // Limpieza del intervalo al desmontar el componente
+    return () => clearInterval(interval);
+  }, [currentIndex]); // Se vuelve a sincronizar si el usuario cambia manualmente usando los botones
+
   return (
-    <section id="testimonios" style={{ background: "#f4f6fa", padding: "6rem 2rem" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+    <section id="nuestros-clientes" style={{ background: "#f4f6fa", padding: "6rem 2rem", position: "relative" }}>
+      <div style={{ maxWidth: "90%", margin: "0 auto", position: "relative" }}>
+        
+        {/* Encabezado */}
         <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <span style={{ color: "#f0a500", fontWeight: 700, fontSize: 12, letterSpacing: 3 }}>
             CLIENTES
           </span>
           <h2 style={{ color: "#0a1428", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", fontWeight: 800, margin: "0.5rem 0" }}>
-            Lo que dicen nuestros clientes
+            Nuestros Clientes
           </h2>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }} className="testimonials-grid">
-          {TESTIMONIALS.map((t) => (
-            <div key={t.name} style={{
-              background: "#fff", borderRadius: 12, padding: "2rem",
-              boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-              borderTop: `4px solid ${t.color}`,
-            }}>
-              <p style={{ color: "#445566", fontSize: 15, lineHeight: 1.75, fontStyle: "italic", margin: "0 0 1.5rem" }}>
-                "{t.text}"
-              </p>
-              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                <div style={{
-                  width: 44, height: 44, borderRadius: "50%", background: t.color,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  color: "#fff", fontWeight: 700, fontSize: 15, flexShrink: 0,
-                }}>
-                  {t.initials}
-                </div>
-                <div>
-                  <div style={{ fontWeight: 700, color: "#0a1428", fontSize: 15 }}>{t.name}</div>
-                  <div style={{ color: "#778899", fontSize: 13 }}>{t.role} — {t.company}</div>
-                </div>
+        {/* Contenedor Enmascarado del Carrusel */}
+        <div style={{ overflow: "hidden", margin: "0 1rem" }}>
+          <div 
+            style={{ 
+              display: "flex", 
+              gap: 24,
+              transform: `translateX(calc(-${currentIndex * 33.333}% - ${currentIndex * 16}px))`, 
+              transition: "transform 0.5s ease-in-out"
+            }}
+            className="carousel-track"
+          >
+            {CLIENTS.map((client) => (
+              <div 
+                key={client.name} 
+                style={{
+                  background: "#fff", 
+                  borderRadius: 12, 
+                  padding: "3rem 2rem",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minHeight: "200px",
+                  flex: "0 0 calc(33.333% - 16px)",
+                  boxSizing: "border-box"
+                }}
+                className="carousel-card"
+              >
+                <img 
+                  src={client.logo} 
+                  alt={`Logo de ${client.name}`}
+                  style={{ 
+                    maxWidth: "100%", 
+                    maxHeight: "80px", 
+                    objectFit: "contain",
+                    // Se ha eliminado el filtro de escala de grises y opacidad
+                    transition: "all 0.3s ease"
+                  }}
+                  // Se han eliminado los eventos onMouseOver y onMouseOut
+                />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {/* Botones de Navegación del Carrusel */}
+        <button 
+          onClick={prevSlide}
+          style={{
+            position: "absolute", left: "-2rem", top: "60%", transform: "translateY(-50%)",
+            background: "#fff", border: "none", width: 44, height: 44, borderRadius: "50%",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)", cursor: "pointer", fontSize: "1.2rem",
+            display: "flex", alignItems: "center", justifyContent: "center", color: "#0a1428", zIndex: 10
+          }}
+          className="carousel-btn"
+        >
+          &#10094;
+        </button>
+        <button 
+          onClick={nextSlide}
+          style={{
+            position: "absolute", right: "-2rem", top: "60%", transform: "translateY(-50%)",
+            background: "#fff", border: "none", width: 44, height: 44, borderRadius: "50%",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.1)", cursor: "pointer", fontSize: "1.2rem",
+            display: "flex", alignItems: "center", justifyContent: "center", color: "#0a1428", zIndex: 10
+          }}
+          className="carousel-btn"
+        >
+          &#10095;
+        </button>
       </div>
 
+      {/* Estilos responsivos adaptados al carrusel */}
       <style>{`
         @media (max-width: 900px) {
-          .testimonials-grid { grid-template-columns: 1fr !important; }
+          .carousel-track { 
+            transform: none !important; 
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 1rem;
+          }
+          .carousel-card { 
+            flex: 0 0 85% !important; 
+            scroll-snap-align: center;
+          }
+          .carousel-btn {
+            display: none !important;
+          }
         }
       `}</style>
     </section>
