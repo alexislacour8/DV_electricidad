@@ -1,10 +1,11 @@
 import img1 from "../img/WhatsApp Image 2026-05-12 at 23.38.27.jpeg";
-import img2 from "../img/WhatsApp Image 2026-05-12 at 23.38.28 (2).jpeg";
-import img3 from "../img/WhatsApp Image 2026-05-12 at 23.38.30.jpeg";
-import img4 from "../img/WhatsApp Image 2026-05-12 at 23.38.31 (2).jpeg";
+import img2 from "../img/WhatsApp Image 2026-05-12 at 23.38.28 (1).jpeg";
+import img3 from "../img/WhatsApp Image 2026-05-12 at 23.38.28 (2).jpeg";
+import img4 from "../img/WhatsApp Image 2026-05-12 at 23.38.28 (3).jpeg";
 import img5 from "../img/WhatsApp Image 2026-05-12 at 23.38.28 (4).jpeg";
-
-const bannerImages = [img5, img2, img3, img4, img1];
+import img7 from "../img/WhatsApp Image 2026-05-12 at 23.38.28.jpeg";
+import img8 from "../img/WhatsApp Image 2026-05-12 at 23.38.29.jpeg";
+const bannerImages = [img5, img2, img3, img4];
 const randomBanner = bannerImages[Math.floor(Math.random() * bannerImages.length)];
 
 const STATS = [
@@ -31,7 +32,7 @@ export default function Hero() {
       {/* Imagen de fondo */}
       <div style={{
         position: "absolute", inset: 0,
-        backgroundImage: `url(${randomBanner})`,
+        backgroundImage: `url(${img8})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
