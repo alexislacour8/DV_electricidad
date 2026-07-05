@@ -17,7 +17,7 @@ export default function Footer() {
           </div>
           <p style={{ color: "#556677", fontSize: 14, lineHeight: 1.7, maxWidth: 320 }}>
             Especialistas en electricidad industrial. Instalaciones, mantenimiento
-            y automatización para la industria bonaerense desde 2009.
+            y automatización para la industria bonaerense desde 2010.
           </p>
         </div>
 
