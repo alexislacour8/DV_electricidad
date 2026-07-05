@@ -50,10 +50,10 @@ export default function Navbar() {
           <span style={{ fontSize: 28 }}>⚡</span>
           <div>
             <span style={{ fontFamily: "'Impact', sans-serif", fontSize: 22, color: "#f0a500", letterSpacing: 2 }}>
-              ELECTRO
+              WORK
             </span>
             <span style={{ fontFamily: "'Impact', sans-serif", fontSize: 22, color: "#fff", letterSpacing: 2 }}>
-              PRO
+            SOLUTION SRL
             </span>
             <div style={{ fontSize: 9, color: "#aac", letterSpacing: 3, marginTop: -4 }}>
               ELECTRICIDAD INDUSTRIAL
