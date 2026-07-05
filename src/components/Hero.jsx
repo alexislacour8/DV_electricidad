@@ -9,7 +9,7 @@ const bannerImages = [img5, img2, img3, img4];
 const randomBanner = bannerImages[Math.floor(Math.random() * bannerImages.length)];
 
 const STATS = [
-  { icon: "⚡", value: "15+", label: "Años de experiencia" },
+  { icon: "⚡", value: "16+", label: "Años de experiencia" },
   { icon: "🏭", value: "320+", label: "Proyectos completados" },
   { icon: "👷", value: "40+", label: "Técnicos certificados" },
   { icon: "🏆", value: "98%", label: "Clientes satisfechos" },
@@ -85,7 +85,7 @@ export default function Hero() {
 
           <p style={{ color: "#99aacc", fontSize: 17, lineHeight: 1.7, marginBottom: "2rem", maxWidth: 480 }}>
             Instalaciones, mantenimiento y automatización eléctrica industrial.
-            Más de 15 años trabajando con plantas industriales en el Gran Buenos Aires.
+            Más de 16 años trabajando con plantas industriales en el Gran Buenos Aires.
           </p>
 
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
