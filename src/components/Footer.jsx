@@ -34,7 +34,7 @@ export default function Footer() {
             <div>📞 11 59706836 | 11 21554821</div>
             <div>✉️ mail.worksolution@gmail.com</div>
             {/* <div>📍 Quilmes, Buenos Aires</div> */}
-            <div style={{ marginTop: 8, color: "#f0a500", fontWeight: 600 }}>Emergencias 24/7</div>
+          
           </div>
         </div>
       </div>
