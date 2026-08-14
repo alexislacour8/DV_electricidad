@@ -5,7 +5,7 @@ const CONTACT_INFO = [
   { icon: "📞", label: "Teléfono", val: "11 59706836  " },
   { icon: "📞", label: "Teléfono", val: "11 21554821  " },
   { icon: "✉️", label: "Email", val: "mail.worksolution@gmail.com" },
-  { icon: "🕐", label: "Horario", val: "Lun–Vie 8:00–18:00 | Emergencias 24/7" },
+  { icon: "🕐", label: "Horario", val: "Lun–Vie 8:00–18:00" },
 ];
 
 // ⚠️ Reemplazá este número con el tuyo (sin +, sin espacios, con código de país)
