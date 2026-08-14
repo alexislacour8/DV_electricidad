@@ -15,7 +15,28 @@ body {
   background: #0a1428;
   color: #fff;
 }
+.boton-flotante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  transition: transform 0.2s;
+}
 
+.boton-flotante:hover {
+  transform: scale(1.1);
+}
 input::placeholder,
 textarea::placeholder {
   color: rgba(255, 255, 255, 0.35);

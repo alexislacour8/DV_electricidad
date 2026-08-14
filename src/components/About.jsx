@@ -58,13 +58,7 @@ export default function About() {
                 <div style={{ color: "#778899", fontSize: 13 }}>Ingeniería y Montaje Electromecánico</div>
               </div>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 24 }}>📞</span>
-              <div>
-                <div style={{ fontSize: 12, color: "#778899" }}>Llamanos ahora</div>
-                <div style={{ fontWeight: 700, color: "#0a1428", fontSize: 18 }}>011 4523-8890</div>
-              </div>
-            </div>
+           
           </div>
         </div>
 

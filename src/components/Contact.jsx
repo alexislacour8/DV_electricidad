@@ -3,7 +3,8 @@ import { useState } from "react";
 const CONTACT_INFO = [
   // { icon: "📍", label: "Dirección", val: "Av. Calchaquí 3700, Quilmes, Buenos Aires" },
   { icon: "📞", label: "Teléfono", val: "11 59706836  " },
-  { icon: "✉️", label: "Email", val: "worksolution@gmail.com" },
+  { icon: "📞", label: "Teléfono", val: "11 21554821  " },
+  { icon: "✉️", label: "Email", val: "mail.worksolution@gmail.com" },
   { icon: "🕐", label: "Horario", val: "Lun–Vie 8:00–18:00 | Emergencias 24/7" },
 ];
 
@@ -123,6 +124,9 @@ ${form.mensaje}`;
               Se va a abrir WhatsApp con tu mensaje listo para enviar.
             </p>
           </div>
+          <a href="mailto:mail.worksolution@gmail.com" class="boton-flotante" title="Enviar email">
+  ✉️
+</a>
         </div>
       </div>
 
