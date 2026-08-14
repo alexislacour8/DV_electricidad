@@ -31,8 +31,8 @@ export default function Footer() {
         <div>
           <h4 style={{ color: "#fff", fontWeight: 700, marginBottom: "1rem", fontSize: 14 }}>Contacto</h4>
           <div style={{ color: "#556677", fontSize: 13, lineHeight: 1.8 }}>
-            <div>📞 11 59706836  </div>
-            <div>✉️ worksolution@gmail.com</div>
+            <div>📞 11 59706836 | 11 21554821</div>
+            <div>✉️ mail.worksolution@gmail.com</div>
             {/* <div>📍 Quilmes, Buenos Aires</div> */}
             <div style={{ marginTop: 8, color: "#f0a500", fontWeight: 600 }}>Emergencias 24/7</div>
           </div>
